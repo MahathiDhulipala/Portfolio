@@ -21,7 +21,3 @@ This repository contains my professional portfolio website showcasing my skills,
 - GitHub Pages for hosting
 
 ## View Live
-[https://mahathidhulipala.github.io](https://mahathidhulipala.github.io)
-
-## License
-MIT License
