@@ -736,33 +736,53 @@ document.addEventListener('keydown', function(e) {
     
    
     // Form submission
-    const form = document.querySelector('.contact-form');
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            const submitButton = this.querySelector('button[type="submit"]');
-            const originalText = submitButton.querySelector('span').textContent;
-            
-            // Show loading state
-            submitButton.disabled = true;
-            submitButton.querySelector('span').textContent = 'Sending...';
-            
-            // Simulate form submission (replace with actual AJAX call)
-            setTimeout(() => {
+const form = document.querySelector('.contact-form');
+if (form) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this);
+        const submitButton = this.querySelector('button[type="submit"]');
+        const originalText = submitButton.querySelector('span').textContent;
+        
+        // Show loading state
+        submitButton.disabled = true;
+        submitButton.querySelector('span').textContent = 'Sending...';
+        
+        // Actual AJAX call to Formspree
+        fetch(this.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                // Success
                 submitButton.querySelector('span').textContent = 'Message Sent!';
                 submitButton.style.backgroundColor = '#4CAF50';
-                
-                setTimeout(() => {
-                    submitButton.querySelector('span').textContent = originalText;
-                    submitButton.style.backgroundColor = '';
-                    submitButton.disabled = false;
-                    form.reset();
-                }, 2000);
-            }, 1500);
+                form.reset();
+            } else {
+                throw new Error('Form submission failed');
+            }
+        })
+        .catch(error => {
+            // Error handling
+            submitButton.querySelector('span').textContent = 'Error, try again';
+            submitButton.style.backgroundColor = '#f44336';
+            console.error('Error:', error);
+        })
+        .finally(() => {
+            // Reset button after 2 seconds
+            setTimeout(() => {
+                submitButton.querySelector('span').textContent = originalText;
+                submitButton.style.backgroundColor = '';
+                submitButton.disabled = false;
+            }, 2000);
         });
-    }
+    });
+}
     
     // Animate elements when they come into view
     const animateOnScroll = () => {
