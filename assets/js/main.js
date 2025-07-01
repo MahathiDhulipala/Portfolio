@@ -737,52 +737,61 @@ document.addEventListener('keydown', function(e) {
    
     // Form submission
 const form = document.querySelector('.contact-form');
-if (form) {
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const formData = new FormData(this);
-        const submitButton = this.querySelector('button[type="submit"]');
-        const originalText = submitButton.querySelector('span').textContent;
-        
-        // Show loading state
-        submitButton.disabled = true;
-        submitButton.querySelector('span').textContent = 'Sending...';
-        
-        // Actual AJAX call to Formspree
-        fetch(this.action, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
+    
+    if (form) {
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitButton = this.querySelector('button[type="submit"]');
+            const buttonText = submitButton.querySelector('span');
+            const originalText = buttonText.textContent;
+            const originalBgColor = submitButton.style.backgroundColor;
+            
+            // Show loading state
+            submitButton.disabled = true;
+            buttonText.textContent = 'Sending...';
+            
+            try {
+                const formData = new FormData(this);
+                const response = await fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Success state
+                    buttonText.textContent = 'Message Sent!';
+                    submitButton.style.backgroundColor = '#4CAF50';
+                    form.reset();
+                    
+                    // Reset button after 2 seconds
+                    setTimeout(() => {
+                        buttonText.textContent = originalText;
+                        submitButton.style.backgroundColor = originalBgColor;
+                        submitButton.disabled = false;
+                    }, 2000);
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                
+                // Error state
+                buttonText.textContent = 'Error, try again';
+                submitButton.style.backgroundColor = '#f44336';
+                
+                // Reset button after 2 seconds
+                setTimeout(() => {
+                    buttonText.textContent = originalText;
+                    submitButton.style.backgroundColor = originalBgColor;
+                    submitButton.disabled = false;
+                }, 2000);
             }
-        })
-        .then(response => {
-            if (response.ok) {
-                // Success
-                submitButton.querySelector('span').textContent = 'Message Sent!';
-                submitButton.style.backgroundColor = '#4CAF50';
-                form.reset();
-            } else {
-                throw new Error('Form submission failed');
-            }
-        })
-        .catch(error => {
-            // Error handling
-            submitButton.querySelector('span').textContent = 'Error, try again';
-            submitButton.style.backgroundColor = '#f44336';
-            console.error('Error:', error);
-        })
-        .finally(() => {
-            // Reset button after 2 seconds
-            setTimeout(() => {
-                submitButton.querySelector('span').textContent = originalText;
-                submitButton.style.backgroundColor = '';
-                submitButton.disabled = false;
-            }, 2000);
         });
-    });
-}
+    }
     
     // Animate elements when they come into view
     const animateOnScroll = () => {
