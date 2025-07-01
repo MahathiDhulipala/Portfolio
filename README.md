@@ -16,8 +16,8 @@ This repository contains my professional portfolio website showcasing my skills,
 
 ## Technologies Used
 - HTML5, CSS3, JavaScript
-- Bootstrap 5
 - Font Awesome icons
 - GitHub Pages for hosting
 
 ## View Live
+https://mahathidhulipala.github.io/Portfolio/
