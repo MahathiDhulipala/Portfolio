@@ -347,12 +347,27 @@ document.querySelectorAll('.view-cert-btn').forEach(btn => {
 });
     // Certificate data
     const certificates = {
-        tableau: {
-            image: 'assets/img/certificates/tableau-cert.png',
-            title: 'Tableau Desktop Certification',
-            description: 'Data visualization and analytics',
-            date: 'Issued: 2023'
-        },
+        tdf: {
+  image: 'assets/img/certificates/TDF.png',
+  title: 'Tableau Desktop Foundations',
+  description: 'Salesforce Certified — Tableau Desktop Foundations',
+  date: 'Issued: February 18, 2025',
+},
+
+tda: {
+  image: 'assets/img/certificates/TDA.png',
+  title: 'Tableau Desktop Analyst',
+  description: 'Salesforce Certified — Tableau Desktop Analyst',
+  date: 'Issued: February 18, 2025',
+},
+
+tse: {
+  image: 'assets/img/certificates/TSE.png',
+  title: 'Tableau Server Administrator',
+  description: 'Salesforce Certified — Tableau Server Administrator',
+  date: 'Issued: August 09, 2025',
+},
+
         scrum: {
             image: 'assets/img/certificates/scrum-cert.png',
             title: 'Agile Scrum Master',
