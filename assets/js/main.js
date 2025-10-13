@@ -358,7 +358,7 @@ tda: {
   image: 'assets/img/certificates/TDA.png',
   title: 'Tableau Desktop Analyst',
   description: 'Salesforce Certified — Tableau Desktop Analyst',
-  date: 'Issued: February 18, 2025',
+  date: 'Issued: July 26, 2025',
 },
 
 tse: {
