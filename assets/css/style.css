@@ -3662,3 +3662,303 @@ blockquote.typewriter {
     padding-top: 1rem;
     border-top: 1px solid #eee;
 }
+/* =============================================
+   INFLUENTIAL WOMEN - BRANDED CARD
+   ============================================= */
+
+.honor-card.iw-featured-card {
+    border: 1px solid rgba(233, 30, 99, 0.15);
+    position: relative;
+    overflow: visible;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 30px 25px 25px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    text-align: center;
+}
+
+.honor-card.iw-featured-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(233, 30, 99, 0.08);
+}
+
+/* Pink shimmer top border */
+.honor-card.iw-featured-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #e91e63, #ff6b9d, #e91e63);
+    background-size: 200% 100%;
+    border-radius: 12px 12px 0 0;
+    animation: pinkShimmer 3s linear infinite;
+}
+
+@keyframes pinkShimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* Icon */
+.iw-icon {
+    background: linear-gradient(135deg, #e91e63, #ff6b9d) !important;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    color: white;
+    font-size: 28px;
+    box-shadow: 0 5px 15px rgba(233, 30, 99, 0.25);
+    transition: var(--transition);
+}
+
+.honor-card.iw-featured-card:hover .iw-icon {
+    transform: scale(1.05) rotate(5deg);
+    box-shadow: 0 8px 25px rgba(233, 30, 99, 0.35);
+}
+
+/* Platform row */
+.iw-platform {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+}
+
+.iw-logo {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ========================================== */
+/* LOGO PLACEHOLDER - REPLACE <i> with <img> */
+/* ========================================== */
+.iw-logo-img {
+    height: 28px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.iw-logo i {
+    font-size: 1.2rem;
+}
+
+.iw-badge {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #e91e63;
+    background: #fce4ec;
+    padding: 3px 14px;
+    border-radius: 50px;
+    font-weight: 600;
+    border: 1px solid #f8bbd0;
+}
+
+/* Title */
+.honor-card.iw-featured-card h3 {
+    font-size: 1.15rem;
+    color: var(--dark);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.honor-card.iw-featured-card p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 14px;
+}
+
+/* Links */
+.iw-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 10px 0 16px;
+}
+
+.iw-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 16px;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: #555;
+    background: #f5f5f5;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.iw-link:hover {
+    background: #fce4ec;
+    color: #e91e63;
+    border-color: #f8bbd0;
+    transform: translateY(-2px);
+}
+
+.iw-link i {
+    font-size: 0.85rem;
+    color: #e91e63;
+}
+
+/* Quote */
+.iw-quote {
+    background: #fce4ec;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0 16px;
+    position: relative;
+    border-left: 3px solid #e91e63;
+    text-align: left;
+}
+
+.iw-quote i {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    font-size: 1.4rem;
+    color: #e91e63;
+    opacity: 0.2;
+}
+
+.iw-quote span {
+    font-size: 0.88rem;
+    font-style: italic;
+    color: #444;
+    padding-left: 22px;
+    display: block;
+    line-height: 1.6;
+}
+
+/* Tags */
+.iw-tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.iw-tags span {
+    background: #fce4ec !important;
+    color: #e91e63 !important;
+    font-size: 0.75rem;
+    padding: 4px 14px;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.iw-tags span:hover {
+    background: #e91e63 !important;
+    color: white !important;
+    transform: translateY(-2px);
+}
+
+
+/* =============================================
+   SOCIAL ICON - INFLUENTIAL WOMEN HOVER EFFECT
+   ============================================= */
+
+/* Hero social icon hover */
+.social-icons a[aria-label="Influential Women"]:hover {
+    background: rgba(233, 30, 99, 0.2) !important;
+    transform: translateY(-5px);
+}
+
+.social-icons a[aria-label="Influential Women"] i {
+    transition: transform 0.3s ease;
+}
+
+.social-icons a[aria-label="Influential Women"]:hover i {
+    transform: scale(1.1);
+}
+
+/* Footer social icon hover */
+.footer-social .social-icons a[aria-label="Influential Women"]:hover {
+    background: rgba(233, 30, 99, 0.2) !important;
+    transform: translateY(-5px);
+}
+
+.footer-social .social-icons a[aria-label="Influential Women"] i {
+    transition: transform 0.3s ease;
+}
+
+.footer-social .social-icons a[aria-label="Influential Women"]:hover i {
+    transform: scale(1.1);
+}
+
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 576px) {
+    .honor-card.iw-featured-card {
+        padding: 20px 16px;
+    }
+
+    .iw-logo {
+        font-size: 0.95rem;
+    }
+
+    .iw-links {
+        gap: 6px;
+    }
+
+    .iw-link {
+        font-size: 0.7rem;
+        padding: 4px 12px;
+    }
+
+    .iw-quote span {
+        font-size: 0.8rem;
+        padding-left: 18px;
+    }
+
+    .iw-quote i {
+        font-size: 1rem;
+        top: 8px;
+        left: 8px;
+    }
+}
+/* IU ICON */
+.honor-icon.iw-icon {
+    width: 90px;
+    height: 90px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    overflow: hidden;
+    background: #ffffff;
+    border-radius: 50%;
+}
+
+.honor-icon.iw-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+.iw-social-icon {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    display: block;
+}
