@@ -825,15 +825,7 @@ const form = document.querySelector('.contact-form');
     window.addEventListener('scroll', animateOnScroll);
     animateOnScroll(); // Run once on load
     
-    // Parallax effect for about image
-    const aboutImg = document.querySelector('.about-img');
-    if (aboutImg) {
-        window.addEventListener('mousemove', (e) => {
-            const x = (window.innerWidth - e.pageX) / 20;
-            const y = (window.innerHeight - e.pageY) / 20;
-            aboutImg.style.transform = `translate(${x}px, ${y}px)`;
-        });
-    }
+    
     
     // Add floating animation to elements with class 'float'
     document.querySelectorAll('.float').forEach(el => {
