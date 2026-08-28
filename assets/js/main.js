@@ -466,7 +466,37 @@ tse: {
         description: 'The Missouri Way',
         date: 'Issued: June 2025',
         duration: '2.25 hours'
-    }
+    },
+    'icicacs-2026': {
+    image: 'assets/img/certificates/icicacs-2026.jpg',
+    title: 'ICICACS-2026 Reviewer Certificate',
+    description: '4th International Conference on Integrated Circuits and Communication Systems',
+    date: 'Issued: May 22–23, 2026'
+},
+'icgpc-2026': {
+    image: 'assets/img/certificates/icgpc-2026.jpg',
+    title: 'ICGPC-2026 Reviewer Certificate',
+    description: '2nd International Conference on Grid and Parallel Computing',
+    date: 'Issued: June 5–6, 2026'
+},
+'icissc-2026': {
+    image: 'assets/img/certificates/icissc-2026.jpg',
+    title: 'ICISSC-2026 Reviewer Certificate',
+    description: 'International Conference on Intelligent Systems and Smart Computing',
+    date: 'Issued: July 3–4, 2026'
+},
+'aikiiE-2026': {
+    image: 'assets/img/certificates/aikiiE-2026.jpg',
+    title: 'AIKIIE-2026 Reviewer Certificate',
+    description: '2nd International Conference on Ambient Intelligence, Knowledge Informatics and Industrial Electronics',
+    date: 'Issued: August 7–8, 2026'
+},
+'ieee-access-2026': {
+    image: 'assets/img/certificates/ieee-access-2026.jpg',
+    title: 'IEEE Access Reviewer Certificate',
+    description: 'Peer Review for IEEE Access Journal',
+    date: 'Issued: 2026'
+}
     };
     
 
@@ -1047,7 +1077,121 @@ function initTiltCards() {
       skill.style.transitionDelay = `${index * 0.05}s`;
     });
   });
+// =============================================
+// PEER REVIEW - CERTIFICATE MODAL
+// =============================================
 
+(function() {
+    // Certificate data
+    const certData = {
+        'icicacs-2026': {
+            image: 'assets/img/certificates/icicacs-2026.jpg',
+            title: 'ICICACS-2026 Reviewer Certificate',
+            description: '4th International Conference on Integrated Circuits and Communication Systems',
+            date: 'Issued: May 22–23, 2026'
+        },
+        'icgpc-2026': {
+            image: 'assets/img/certificates/icgpc-2026.jpg',
+            title: 'ICGPC-2026 Reviewer Certificate',
+            description: '2nd International Conference on Grid and Parallel Computing',
+            date: 'Issued: June 5–6, 2026'
+        },
+        'icissc-2026': {
+            image: 'assets/img/certificates/icissc-2026.jpg',
+            title: 'ICISSC-2026 Reviewer Certificate',
+            description: 'International Conference on Intelligent Systems and Smart Computing',
+            date: 'Issued: July 3–4, 2026'
+        },
+        'aikiiE-2026': {
+            image: 'assets/img/certificates/aikiiE-2026.jpg',
+            title: 'AIKIIE-2026 Reviewer Certificate',
+            description: '2nd International Conference on Ambient Intelligence, Knowledge Informatics and Industrial Electronics',
+            date: 'Issued: August 7–8, 2026'
+        },
+        'ieee-access-2026': {
+            image: 'assets/img/certificates/ieee-access-2026.jpg',
+            title: 'IEEE Access Reviewer Certificate',
+            description: 'Peer Review for IEEE Access Journal',
+            date: 'Issued: 2026'
+        }
+    };
+
+    // DOM elements
+    const modal = document.getElementById('pr-cert-modal');
+    const modalImg = document.getElementById('pr-cert-image');
+    const modalTitle = document.getElementById('pr-cert-title');
+    const modalDesc = document.getElementById('pr-cert-desc');
+    const modalDate = document.getElementById('pr-cert-date');
+    const closeBtn = document.querySelector('.pr-modal-close');
+
+    // Open modal function
+    function openCertModal(certId) {
+        const data = certData[certId];
+        if (!data) {
+            console.warn('Certificate data not found for:', certId);
+            return;
+        }
+
+        modalImg.src = data.image;
+        modalImg.alt = data.title + ' Certificate';
+        modalTitle.textContent = data.title;
+        modalDesc.textContent = data.description;
+        modalDate.textContent = data.date;
+
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Close modal function
+    function closeCertModal() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // Event listeners for all "View Certificate" buttons
+    document.querySelectorAll('.view-cert-btn[data-cert]').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const certId = this.getAttribute('data-cert');
+            openCertModal(certId);
+        });
+    });
+
+    // Close button
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeCertModal);
+    }
+
+    // Click outside to close
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeCertModal();
+            }
+        });
+    }
+
+    // ESC key to close
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal && modal.style.display === 'flex') {
+            closeCertModal();
+        }
+    });
+
+    // Also handle any existing modal close buttons from other sections
+    document.querySelectorAll('.close-modal').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const parentModal = this.closest('.pr-modal, #certificateModal');
+            if (parentModal) {
+                parentModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    });
+
+    console.log('Peer Review modal initialized. Found ' + document.querySelectorAll('.view-cert-btn[data-cert]').length + ' certificate buttons.');
+})();
  
 });
 
